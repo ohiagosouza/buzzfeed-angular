@@ -9,6 +9,4 @@ import { HomesComponent } from './pages/homes/homes.component';
   styleUrl: './app.component.css',
   imports: [RouterOutlet, HomesComponent],
 })
-export class AppComponent {
-  title = 'buzzfeed-angular';
-}
+export class AppComponent {}

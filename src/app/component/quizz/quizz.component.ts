@@ -22,8 +22,28 @@ export class QuizzComponent {
     if (this.questionMaxIndex > this.questionIndex) {
       this.questionSelected = this.questions[this.questionIndex];
     } else {
+      const quizzResult: string = this.checkAnswers(this.answers);
+
       this.finished = true;
+      this.answerSelected =
+        quizz_questions.results[
+          quizzResult as keyof typeof quizz_questions.results
+        ];
     }
+  }
+
+  checkAnswers(answers: string[]) {
+    const result = answers.reduce((prev, curr, i, arr) => {
+      if (
+        arr.filter((item) => item === prev).length >
+        arr.filter((item) => item === curr).length
+      ) {
+        return prev;
+      } else {
+        return curr;
+      }
+    });
+    return result;
   }
 
   title: string = '';
